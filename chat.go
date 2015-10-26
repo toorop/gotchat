@@ -178,7 +178,15 @@ func (c *Chat) WebsocketHandler(ws *websocket.Conn) {
 			room.PushMessage("chatbot", nic+` has joined the room`)
 			continue
 
-			// Publish in chatroom
+			// leave
+		case "leave":
+			if nic == "" || room == nil {
+				continue
+			}
+			room.Unsub(nic)
+			continue
+
+		// Publish in chatroom
 		case "newmsg":
 			// Si pas ne nic pas de publish
 			if nic == "" || room == nil {

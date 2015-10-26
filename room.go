@@ -238,7 +238,7 @@ func (r *Room) Watch() {
 					// if no heartbeat for r.heartrate * 2 => subscriber is DEAD ! RIP
 					//log.Println(sub.Lastbeat)
 					//log.Println(time.Since(sub.Lastbeat).Seconds(), "-", float64(2*r.heartrate))
-					if sub.Lastbeat != beginingOfTheWorld && time.Since(sub.Lastbeat).Seconds() > float64(2*r.heartrate) {
+					if sub.Lastbeat != beginingOfTheWorld && time.Since(sub.Lastbeat).Seconds() > float64(4*r.heartrate) {
 						logInfo(sub.Nic + " is dead. RIP")
 						r.Unsub(sub.Nic)
 					}
